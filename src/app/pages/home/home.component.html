@@ -1,0 +1,255 @@
+<section class="home conatiner-fluid">
+  <div class="info">
+    <h1 class="home-title">Formulario Cliente</h1>
+    <p class="home-paragraph">Complete los datos faltantes para continuar con su solicitud.</p>
+  </div>
+  <form [formGroup]="dataForm" class="forms">
+    <div class="row">
+      <div class="col-6">
+        <div class="form-header">
+          <img class="icon" src="assets/img/icon/account_circle-blue.svg" alt="">
+          <div class="paragraph">Datos del pagador</div>
+        </div>
+        <div class="form-payment">
+          <!-- name -->
+          <div class="form-input row">
+            <label for="namePay" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-10">
+              <input 
+                type="textPay"
+                class="form-control form-input"
+                id="namePay"
+                name="namePay"
+                formControlName="namePay"
+                placeholder="Yepeto Alberto Flores"
+                autocomplete="off"
+              >
+            </div>
+          </div>
+          <!-- RUN -->
+          <div class="form-input row">
+            <label for="runPay" class="col-sm-2 col-form-label">RUN</label>
+            <div class="col-sm-10">
+              <input 
+                type="text"
+                class="form-control form-input"
+                id="runPay"
+                name="runPay"
+                formControlName="runPay"
+                placeholder="10.000.000-k"
+                autocomplete="off"
+              >
+            </div>
+          </div>
+          <!-- correo -->
+          <div class="form-input row">
+            <label for="emailPay" class="col-sm-2 col-form-label">Correo</label>
+            <div class="col-sm-10">
+              <input
+                type="text" 
+                class="form-control form-input"
+                id="emailPay"
+                name="emailPay"
+                formControlName="emailPay"
+                placeholder="prueba@prueba.cl"
+                autocomplete="off"
+              >
+            </div>
+          </div>
+          <!-- celular -->
+          <div class="form-input row">
+            <label for="phonePay" class="col-sm-2 col-form-label">Celular</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control form-input"
+                id="phonePay"
+                name="phonePay"
+                formControlName="phonePay"
+                placeholder="+569 9999 9999"
+                autocomplete="off"
+              >
+            </div>
+          </div>
+          <div *ngIf="isChangeButton">
+            <form [formGroup]="bankForm">
+              <!-- Bank -->
+              <div class="form-input row">
+                <label for="bankPay" class="col-sm-2 col-form-label">Banco</label>
+                <div class="col-sm-10">
+                  <select class="form-select form-control" aria-label="Default select example" id="bankPay" name="bankPay" formControlName="bankPay">
+                    <option selected value="">Seleccionar</option>
+                    <option *ngFor="let item of bankList" [value]="item.name">{{ item.name }}</option>
+                  </select>
+                </div>
+              </div>
+              <!-- numberAccount -->
+              <div class="form-input row">
+                <label for="numberAccountPay" class="col-sm-2 col-form-label">N° cuenta</label>
+                <div class="col-sm-10">
+                  <input
+                  type="text"
+                  class="form-control form-input"
+                  id="numberAccountPay"
+                  name="numberAccountPay"
+                  formControlName="numberAccountPay"
+                  placeholder="123456789012"
+                  autocomplete="off"
+                  >
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div *ngIf="!isChangeButton" class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkUseData" formControlName="checkUseData">
+          <label class="form-check-label" for="flexCheckDefault">
+            ¿Deseas utilizar los mismos datos para el cliente?
+          </label>
+        </div>
+      </div>
+      <div class="col-6 pl-5">
+        <div class="form-header">
+          <img class="icon" src="assets/img/icon/account_circle-orange.svg" alt="">
+          <div class="paragraph">Datos del cliente</div>
+        </div>
+        <div class="form-payment">
+          <!-- name -->
+          <div class="form-input row">
+            <label for="nameClient" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-10">
+              <input 
+                type="text" 
+                class="form-control form-input" 
+                id="nameClient" 
+                name="nameClient" 
+                formControlName="nameClient" 
+                placeholder="Yepeto Alberto Flores"
+                autocomplete="off"
+                (keyup)="releaseInput()"
+              >
+            </div>
+          </div>
+          <!-- RUN -->
+          <div class="form-input row">
+            <label for="runClient" class="col-sm-2 col-form-label">RUN</label>
+            <div class="col-sm-10">
+              <input 
+                type="text" 
+                class="form-control form-input" 
+                id="runClient"
+                name="runClient" 
+                formControlName="runClient" 
+                placeholder="10.000.000-k"
+                autocomplete="off"
+                (keyup)="releaseInput()"
+              >
+            </div>
+          </div>
+          <!-- correo -->
+          <div class="form-input row">
+            <label for="emailClient" class="col-sm-2 col-form-label">Correo</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control form-input"
+                id="emailClient"
+                name="emailClient"
+                formControlName="emailClient"
+                placeholder="prueba@prueba.cl"
+                autocomplete="off"
+                (keyup)="releaseInput()"
+              >
+            </div>
+          </div>
+          <!-- celular -->
+          <div class="form-input row">
+            <label for="phoneClient" class="col-sm-2 col-form-label">Celular</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control form-input"
+                id="phoneClient" name="phoneClient"
+                formControlName="phoneClient"
+                placeholder="+569 9999 9999"
+                autocomplete="off"
+                (keyup)="releaseInput()"
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="buttom">
+      <button type="button" class="btn btn-outline-secondary">Cancelar</button>
+      <button *ngIf="!isChangeButton" type="button" class="btn btn-primary" [disabled]="!dataForm.valid" (click)="sendData()">Continuar</button>
+      <button *ngIf="isChangeButton" type="button" class="btn btn-primary" [disabled]="!bankForm.valid" data-bs-toggle="modal" data-bs-target="#exampleModal">Continuar</button>
+    </div>
+  </form>
+
+  <!-- ConfirmModal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="assets/img/icon/problem.svg" class="icon" alt="">
+        </div>
+        <div class="modal-body">
+          <div class="info">
+            <p class="title">Confirmación de datos bancarios</p>
+            <p class="paragraph">Confirmar datos bancarios</p>
+          </div>
+          <!-- bank -->
+          <div class="form-input row">
+            <label for="bank" class="col-sm-3 col-form-label">Banco</label>
+            <div class="col-sm-9">
+              <input 
+                type="textPay"
+                class="form-control form-input"
+                id="bank"
+                placeholder="Santander"
+                autocomplete="off"
+              >
+            </div>
+          </div>
+          <!-- numberAccount -->
+          <div class="form-input row">
+            <label for="numberAccount" class="col-sm-3 col-form-label">N° cuenta</label>
+            <div class="col-sm-9">
+              <input 
+                type="textPay"
+                class="form-control form-input"
+                id="numberAccount"
+                placeholder="145868696996"
+                autocomplete="off"
+              >
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">VOLVER</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="sendDataBank()">CONFIRMAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ConfirmDocs -->
+  <div class="modal fade" id="exampleModalDocs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="assets/img/icon/thumb_up.svg" class="icon" alt="">
+        </div>
+        <div class="modal-body">
+          <div class="info">
+            <p class="title">¡Documento firmado exitosamente!</p>
+            <p class="paragraph">Estamos listos, tu documento fue firmado con éxito.</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">LISTO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

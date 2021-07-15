@@ -1,0 +1,47 @@
+<section class="docs conatiner-fluid">
+  <div class="info">
+    <h1 class="docs-title">Formulario Cliente</h1>
+    <p class="docs-paragraph">Complete los datos faltantes para continuar con su solicitud.</p>
+  </div>
+  <div class="dates mt-5">
+    <div class="row">
+      <div class="col-4">
+        <div class="dates-header">
+          <img class="icon" src="assets/img/icon/account_circle-blue.svg" alt="">
+          <div class="paragraph">Datos del pagador</div>
+        </div>
+        <div *ngFor="let item of dataUser" class="dates-info mt-4">
+          <p class="info"><span class="font-w">Nombre: </span>{{ item.name }}</p>
+          <p class="info"><span class="font-w">RUN: </span>{{ item.run }}</p>
+          <p class="info"><span class="font-w">Correo: </span>{{ item.email }}</p>
+          <p class="info"><span class="font-w">Celular: </span>{{ item.phone }}</p>
+          <p class="info"><span class="font-w">Banco: </span>{{ item.bank }}</p>
+          <p class="info"><span class="font-w">N° cuenta: </span>{{ item.numberAccount }}</p>
+        </div>
+        <div class="dates-header mt-5">
+          <img class="icon" src="assets/img/icon/account_circle-orange.svg" alt="">
+          <div class="paragraph">Datos del Cliente</div>
+        </div>
+        <div *ngFor="let item of dataUser" class="dates-info mt-4">
+          <p class="info"><span class="font-w">Nombre: </span>{{ item.name }}</p>
+          <p class="info"><span class="font-w">RUN: </span>{{ item.run }}</p>
+          <p class="info"><span class="font-w">Correo: </span>{{ item.email }}</p>
+          <p class="info"><span class="font-w">Celular: </span>{{ item.phone }}</p>
+          <p class="info"><span class="font-w">Banco: </span>{{ item.bank }}</p>
+          <p class="info"><span class="font-w">N° cuenta: </span>{{ item.numberAccount }}</p>
+        </div>
+        <div class="buttom">
+          <button type="button" class="btn btn-outline-secondary">VOLVER</button>
+          <button type="button" class="btn btn-primary" (click)="sendData()">FIRMAR</button>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="contract mb-4">
+          <img class="icon" src="assets/img/icon/edit_note.svg" alt="">
+          <div class="paragraph">Firmar Cocumento</div>
+        </div>
+        <img src="assets/img/docs/docs.png" alt="image docs" class="w-100">
+      </div>
+    </div>
+  </div>
+</section>
